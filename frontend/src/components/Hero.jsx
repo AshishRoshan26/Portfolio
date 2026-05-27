@@ -1,12 +1,12 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, ExternalLink, Download, GitBranch, Link2 } from 'lucide-react';
+import { ArrowDown, ExternalLink, Download, FileText, GitBranch, Link2, Mail } from 'lucide-react';
 import { PROFILE, HERO_TITLES, STATS } from '../data/portfolioData';
 
 /* ── Character scramble effect ── */
 const CHARS = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-function useTextScramble(text, { speed = 30, scrambleDuration = 800 } = {}) {
+function useTextScramble(text, { scrambleDuration = 1200 } = {}) {
   const [display, setDisplay] = useState('');
   const frameRef = useRef(null);
 
@@ -21,8 +21,6 @@ function useTextScramble(text, { speed = 30, scrambleDuration = 800 } = {}) {
       if (!animating) return;
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / scrambleDuration, 1);
-
-      // Reveal characters progressively
       const revealCount = Math.floor(progress * chars.length);
       for (let i = 0; i < revealCount; i++) revealed[i] = true;
 
@@ -33,7 +31,6 @@ function useTextScramble(text, { speed = 30, scrambleDuration = 800 } = {}) {
       }).join('');
 
       setDisplay(result);
-
       if (progress < 1) {
         frameRef.current = requestAnimationFrame(tick);
       } else {
@@ -53,13 +50,10 @@ export default function Hero() {
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const timeoutRef = useRef(null);
-
-  // Scramble effect for the name
   const scrambledName = useTextScramble(PROFILE.name, { scrambleDuration: 1200 });
 
   useEffect(() => {
     const currentTitle = HERO_TITLES[titleIndex];
-
     if (!isDeleting) {
       if (displayText.length < currentTitle.length) {
         timeoutRef.current = setTimeout(() => {
@@ -89,8 +83,6 @@ export default function Hero() {
         <div className="hero-orb hero-orb-3" />
         <div className="hero-grid" />
       </div>
-
-      {/* Animated gradient mesh */}
       <div className="hero-gradient-mesh" />
 
       <div className="container">
@@ -110,7 +102,7 @@ export default function Hero() {
               >
                 <span className="hero-badge-dot" />
                 <span className="hero-badge-pulse" />
-                Available for opportunities
+                Open to Opportunities
               </motion.div>
             )}
 
@@ -134,6 +126,7 @@ export default function Hero() {
 
             <p className="hero-description">{PROFILE.tagline}</p>
 
+            {/* ── Primary CTAs ── */}
             <div className="hero-actions">
               <motion.a
                 className="btn btn-primary hero-btn-glow"
@@ -154,27 +147,46 @@ export default function Hero() {
                 whileTap={{ scale: 0.98 }}
               >
                 <Download size={16} />
-                Resume
+                Download CV
+              </motion.a>
+              <motion.a
+                className="btn btn-outline btn-hire"
+                href="#contact"
+                onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Mail size={16} />
+                Hire Me
               </motion.a>
             </div>
 
+            {/* ── Social Links ── */}
             <div className="hero-social-row">
               {PROFILE.github_url && (
                 <a href={PROFILE.github_url} target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="GitHub">
                   <GitBranch size={20} />
+                  <span>GitHub</span>
                 </a>
               )}
               {PROFILE.linkedin_url && (
                 <a href={PROFILE.linkedin_url} target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="LinkedIn">
                   <Link2 size={20} />
+                  <span>LinkedIn</span>
                 </a>
               )}
+              <a href={PROFILE.resume_url} target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label="Resume">
+                <FileText size={20} />
+                <span>Resume</span>
+              </a>
             </div>
 
+            {/* ── Recruiter-Friendly Stats ── */}
             <div className="hero-stats">
               {[
-                { value: STATS.projects_count, label: 'Projects' },
-                { value: `${STATS.total_modules}+`, label: 'Modules Built' },
+                { value: `${STATS.projects_count}+`, label: 'Projects Built' },
+                { value: `${STATS.dsa_problems}+`, label: 'DSA Problems' },
+                { value: `${STATS.certifications}+`, label: 'Certifications' },
                 { value: `${STATS.technologies_used}+`, label: 'Technologies' },
               ].map((stat, i) => (
                 <motion.div
@@ -208,10 +220,10 @@ export default function Hero() {
                 <CodeLine n={1}><span className="code-keyword">class</span> <span className="code-function">Developer</span><span className="code-bracket">:</span></CodeLine>
                 <CodeLine n={2}>&nbsp;&nbsp;<span className="code-keyword">def</span> <span className="code-function">__init__</span><span className="code-bracket">(</span><span className="code-variable">self</span><span className="code-bracket">)</span><span className="code-bracket">:</span></CodeLine>
                 <CodeLine n={3}>&nbsp;&nbsp;&nbsp;&nbsp;<span className="code-variable">self</span>.<span className="code-variable">name</span> <span className="code-operator">=</span> <span className="code-string">"{PROFILE.firstName}"</span></CodeLine>
-                <CodeLine n={4}>&nbsp;&nbsp;&nbsp;&nbsp;<span className="code-variable">self</span>.<span className="code-variable">role</span> <span className="code-operator">=</span> <span className="code-string">"Security Engineer"</span></CodeLine>
+                <CodeLine n={4}>&nbsp;&nbsp;&nbsp;&nbsp;<span className="code-variable">self</span>.<span className="code-variable">role</span> <span className="code-operator">=</span> <span className="code-string">"Backend Engineer"</span></CodeLine>
                 <CodeLine n={5}>&nbsp;&nbsp;&nbsp;&nbsp;<span className="code-variable">self</span>.<span className="code-variable">stack</span> <span className="code-operator">=</span> <span className="code-bracket">[</span></CodeLine>
                 <CodeLine n={6}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="code-string">"Django"</span>, <span className="code-string">"FastAPI"</span>,</CodeLine>
-                <CodeLine n={7}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="code-string">"React"</span>, <span className="code-string">"Python"</span></CodeLine>
+                <CodeLine n={7}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="code-string">"PostgreSQL"</span>, <span className="code-string">"Docker"</span></CodeLine>
                 <CodeLine n={8}>&nbsp;&nbsp;&nbsp;&nbsp;<span className="code-bracket">]</span></CodeLine>
                 <CodeLine n={9} />
                 <CodeLine n={10}>&nbsp;&nbsp;<span className="code-keyword">def</span> <span className="code-function">build</span><span className="code-bracket">(</span><span className="code-variable">self</span><span className="code-bracket">)</span><span className="code-bracket">:</span></CodeLine>

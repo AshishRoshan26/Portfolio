@@ -1,28 +1,18 @@
 import { useRef, useCallback, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ABOUT, PROFILE } from '../data/portfolioData';
-import { Shield, Rocket, Brain, Code2, Download, MapPin, Calendar } from 'lucide-react';
+import { Shield, Rocket, Brain, Code2, Download, MapPin, Calendar, ChevronRight } from 'lucide-react';
 
-const ICON_MAP = {
-  shield: Shield,
-  rocket: Rocket,
-  brain: Brain,
-  code: Code2,
-};
+const ICON_MAP = { shield: Shield, rocket: Rocket, brain: Brain, code: Code2 };
 
-/* ── Spotlight hover effect ── */
 function useSpotlight() {
   const ref = useRef(null);
   const [spotlight, setSpotlight] = useState('');
-
   const onMove = useCallback((e) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setSpotlight(`radial-gradient(350px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.07), transparent 60%)`);
+    setSpotlight(`radial-gradient(350px circle at ${e.clientX - rect.left}px ${e.clientY - rect.top}px, rgba(99, 102, 241, 0.07), transparent 60%)`);
   }, []);
-
   const onLeave = useCallback(() => setSpotlight(''), []);
   return { ref, spotlight, onMove, onLeave };
 }
@@ -45,7 +35,7 @@ export default function About() {
         </motion.div>
 
         <div className="about-grid">
-          {/* Left: Text content */}
+          {/* Left: Text + Key Strengths */}
           <motion.div
             className="about-text-side"
             initial={{ opacity: 0, x: -30 }}
@@ -57,6 +47,27 @@ export default function About() {
                 <p key={i} className="about-paragraph">{para}</p>
               ))}
 
+              {/* Key Strengths — Bullet Highlights */}
+              {ABOUT.keyStrengths && (
+                <div className="about-strengths">
+                  <h4 className="about-strengths-title">Core Strengths</h4>
+                  <div className="about-strengths-list">
+                    {ABOUT.keyStrengths.map((str, i) => (
+                      <motion.div
+                        key={i}
+                        className="about-strength-item"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.4 + i * 0.07 }}
+                      >
+                        <ChevronRight size={14} className="about-strength-icon" />
+                        <span>{str}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="about-meta">
                 <div className="about-meta-item">
                   <MapPin size={16} />
@@ -64,7 +75,7 @@ export default function About() {
                 </div>
                 <div className="about-meta-item">
                   <Calendar size={16} />
-                  <span>{PROFILE.years_experience}+ years building</span>
+                  <span>Fresh Graduate · B.E CSE</span>
                 </div>
               </div>
 
@@ -93,7 +104,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right: Highlights with Spotlight */}
+          {/* Right: Highlights + Stats */}
           <motion.div
             className="about-highlights-side"
             initial={{ opacity: 0, x: 30 }}

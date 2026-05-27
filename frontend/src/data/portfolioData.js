@@ -10,19 +10,19 @@ export const PROFILE = {
   name: "Mohamed Ashish Roshan",
   firstName: "Ashish Roshan",
   initials: "MAR",
-  title: "Full-Stack Developer & Security Engineer",
-  tagline: "I build enterprise-grade security platforms, full-stack applications, and AI-powered systems that solve real-world problems.",
+  title: "Python Backend Developer & Security Engineer",
+  tagline: "Backend Developer specializing in Django, FastAPI, DevSecOps, and scalable API development. Building security-focused applications and cloud-ready solutions.",
   bio: "Passionate software engineer specializing in cybersecurity platforms, DevSecOps intelligence, and full-stack web applications. I thrive on turning complex security challenges into elegant, production-ready solutions.",
   email: "mohamedashishroshanpc@gmail.com",
   phone: "+91 8148199506",
-  location: "Tiruchirappalli,India",
+  location: "Tiruchirappalli, India",
   website: "https://ashishroshan.dev",
   github_url: "https://github.com/AshishRoshan26",
   linkedin_url: "https://linkedin.com/in/ashishroshan",
   instagram_url: "https://instagram.com/aroshanash",
-  resume_url: "/mar-resume.pdf",
+  resume_url: "/Portfolio/mar-resume.pdf",
   available_for_work: true,
-  years_experience: 0 - 1,
+  years_experience: '0-1',
   projects_completed: 5,
   technologies_used: 36,
 };
@@ -31,11 +31,11 @@ export const PROFILE = {
 // 2. HERO SECTION — Rotating titles
 // ─────────────────────────────────────────────────────
 export const HERO_TITLES = [
-  "Full-Stack Python Developer",
-  "Software Engineer",
-  "DevSecOps Architect",
-  "Security Engineer",
-  "AI Systems Builder",
+  "Python Backend Developer",
+  "Django & FastAPI Engineer",
+  "DevSecOps Specialist",
+  "Security-Focused Builder",
+  "Scalable API Architect",
 ];
 
 // ─────────────────────────────────────────────────────
@@ -47,7 +47,8 @@ export const STATS = {
   technologies_used: 36,
   github_contributions: 847,
   lines_of_code: "150K+",
-  cups_of_coffee: 1200,
+  certifications: 8,
+  dsa_problems: 250,
 };
 
 // ─────────────────────────────────────────────────────
@@ -67,12 +68,18 @@ export const NAV_ITEMS = [
 // 5. ABOUT SECTION
 // ─────────────────────────────────────────────────────
 export const ABOUT = {
-  headline: "Crafting secure, scalable digital experiences",
-  description: `I'm a passionate Full-Stack Developer and Security Engineer based in Chennai, India. With a strong foundation in Python, Django, FastAPI, and React, I specialize in building enterprise-grade security platforms and AI-powered systems.
+  headline: "Backend-focused engineer building secure, scalable systems",
+  description: `Python Backend Developer with hands-on experience in Django, FastAPI, and DevSecOps. I build production-grade APIs, security platforms, and AI-integrated applications.
 
-My journey began with a fascination for cybersecurity, which led me to develop SentinelX AURAPRIME — a 26-module AI-driven DevSecOps intelligence platform. Since then, I've been dedicated to creating production-ready applications that combine cutting-edge security with exceptional user experiences.
-
-When I'm not coding, you'll find me researching emerging threats, contributing to open-source projects, or writing technical articles about secure software development.`,
+Built SentinelX AURAPRIME — a 26-module AI-driven DevSecOps platform with 55 API endpoints. Passionate about clean architecture, test-driven development, and solving real engineering problems.`,
+  keyStrengths: [
+    'Backend API Development (Django, FastAPI)',
+    'Database Design (PostgreSQL, MongoDB)',
+    'DevSecOps & Security Engineering',
+    'Docker & AWS Cloud Deployment',
+    'AI-Assisted Development & Prompting',
+    'REST API Architecture & Optimization',
+  ],
   highlights: [
     { icon: "shield", label: "Security First", desc: "Every line of code written with security in mind" },
     { icon: "rocket", label: "Production Ready", desc: "Enterprise-grade architectures built to scale" },
@@ -80,10 +87,10 @@ When I'm not coding, you'll find me researching emerging threats, contributing t
     { icon: "code", label: "Clean Code", desc: "Maintainable, documented, and tested codebases" },
   ],
   funFacts: [
-    { value: "150K+", label: "Lines of Code" },
-    { value: "847", label: "GitHub Contributions" },
-    { value: "1000+", label: "Debugging Hours" },
-    { value: "∞", label: "Curiosity" },
+    { value: "5+", label: "Projects Built" },
+    { value: "250+", label: "DSA Problems" },
+    { value: "8+", label: "Certifications" },
+    { value: "36+", label: "Technologies" },
   ],
 };
 

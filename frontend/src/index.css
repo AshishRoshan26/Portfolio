@@ -2300,20 +2300,27 @@ body.has-custom-cursor select {
 /* ===== HERO SOCIAL ROW ===== */
 .hero-social-row {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 32px;
 }
 
 .hero-social-link {
-  width: 42px;
-  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
   transition: all var(--transition-fast);
+}
+
+.hero-social-link span {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.3px;
 }
 
 .hero-social-link:hover {
@@ -2321,6 +2328,18 @@ body.has-custom-cursor select {
   color: var(--accent-primary);
   background: rgba(99, 102, 241, 0.08);
   transform: translateY(-2px);
+}
+
+/* Hire Me button */
+.btn-hire {
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  color: var(--accent-emerald) !important;
+}
+
+.btn-hire:hover {
+  background: rgba(16, 185, 129, 0.1) !important;
+  border-color: var(--accent-emerald) !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
 }
 
 /* ===== PROJECT CARD ENHANCEMENTS ===== */
@@ -2387,6 +2406,45 @@ body.has-custom-cursor select {
 
 .about-meta-item svg {
   color: var(--accent-primary);
+}
+
+/* ── Key Strengths Bullets ── */
+.about-strengths {
+  margin: 24px 0;
+  padding: 20px;
+  background: rgba(99, 102, 241, 0.04);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: var(--radius-md);
+}
+
+.about-strengths-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent-primary);
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+}
+
+.about-strengths-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+}
+
+.about-strength-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.about-strength-icon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
 }
 
 .about-cta-row {
