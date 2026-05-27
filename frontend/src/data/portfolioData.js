@@ -11,7 +11,7 @@ export const PROFILE = {
   firstName: "Ashish Roshan",
   initials: "MAR",
   title: "Python Backend Developer & Security Engineer",
-  tagline: "Backend Developer specializing in Django, FastAPI, DevSecOps, and scalable API development. Building security-focused applications and cloud-ready solutions.",
+  tagline: "Building scalable backend systems, security-focused applications, and cloud-ready solutions with Python.",
   bio: "Passionate software engineer specializing in cybersecurity platforms, DevSecOps intelligence, and full-stack web applications. I thrive on turning complex security challenges into elegant, production-ready solutions.",
   email: "mohamedashishroshanpc@gmail.com",
   phone: "+91 8148199506",
